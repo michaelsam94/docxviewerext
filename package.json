@@ -1,0 +1,92 @@
+{
+  "name": "docxviewerext",
+  "displayName": "DocxViewer",
+  "description": "Preview DOCX files quickly from VS Code",
+  "version": "0.0.1",
+  "license": "MIT",
+  "publisher": "michaelsam94",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelsam94/docxviewerext.git"
+  },
+  "homepage": "https://github.com/michaelsam94/docxviewerext",
+  "bugs": {
+    "url": "https://github.com/michaelsam94/docxviewerext/issues"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "docxviewerext.openDocxFile",
+        "title": "DOCX Viewer: Open File"
+      },
+      {
+        "command": "docxviewerext.zoomIn",
+        "title": "DOCX Viewer: Zoom In"
+      },
+      {
+        "command": "docxviewerext.zoomOut",
+        "title": "DOCX Viewer: Zoom Out"
+      },
+      {
+        "command": "docxviewerext.resetZoom",
+        "title": "DOCX Viewer: Reset Zoom"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "docxviewerext.openDocxFile",
+          "when": "resourceExtname == .docx",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DOCX Viewer",
+      "properties": {
+        "docxviewerext.openToSide": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open DOCX preview in a side editor group."
+        },
+        "docxviewerext.preserveFocus": {
+          "type": "boolean",
+          "default": false,
+          "description": "Preserve focus in the current editor when opening preview."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run lint",
+    "test": "@vscode/test-electron"
+  },
+  "dependencies": {
+    "mammoth": "^1.11.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^20.14.2",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.5.0",
+    "typescript": "^5.5.2"
+  }
+}

@@ -1,0 +1,4 @@
+.vscode-test
+*.vsix
+test-convert.js
+test-output
